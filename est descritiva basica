@@ -1,30 +1,32 @@
-sinistrosRecife2018Raw <- read.csv2('http://dados.recife.pe.gov.br/dataset/44087d2d-73b5-4ab3-9bd8-78da7436eed1/resource/2485590a-3b35-4ad0-b955-8dfc36b61021/download/acidentes_2018.csv', sep = ';', encoding = 'UTF-8')
+str(starwars)
+starwars_selected <- starwars %>% select("height", "mass")
+starwars_selected_na <- na.omit(starwars_selected)
 
 ## frequência absoluta
-table(sinistrosRecife2018Raw$vitimas)
+table(starwars_selected_na$mass)
 
 ## frequência relativa 
-prop.table(table(sinistrosRecife2018Raw$vitimas))
+prop.table(table(starwars_selected_na$mass))
 
 ## Média 
-mean(sinistrosRecife2018Raw$vitimas)
+mean(starwars_selected_na$mass)
 
 ## Mediana 
-median(sinistrosRecife2018Raw$vitimas)
+median(starwars_selected_na$mass)
 
 ## quantis
-quantile(sinistrosRecife2018Raw$vitimas, probs=0.75)
-quantile(sinistrosRecife2018Raw$vitimas, probs=0.10)
-quantile(sinistrosRecife2018Raw$vitimas, probs=0.95)
-boxplot(sinistrosRecife2018Raw$vitimas) 
+quantile(starwars_selected_na$mass, probs=0.75)
+quantile(starwars_selected_na$mass, probs=0.10)
+quantile(starwars_selected_na$mass, probs=0.95)
+boxplot(starwars_selected_na$mass) 
 
 ## Desvio-padrão 
-sd(sinistrosRecife2018Raw$vitimas)
-plot(iris$Sepal.Length)
+sd(starwars_selected_na$mass)
+plot(starwars_selected_na$mass)
 
-summary(sinistrosRecife2018Raw$vitimas)
+summary(starwars_selected_na$mass)
 
 ## Sumário completo 
 pacman::p_load(fBasics)
-basicStats(sinistrosRecife2018Raw$vitimas[ , c(1:8)])
-hist(sinistrosRecife2018Raw$vitimas) 
+basicStats(starwars_selected_na$mass[ , c(1:2)])
+hist(starwars_selected_na$mass)
